@@ -16,7 +16,7 @@ function reformattedBooks (books){
                 {
                     first_name : book.first_name,
                     last_name : book.last_name,
-                    id: book.author.id
+                    id: book.author_id
                 }
             );
         }
@@ -30,13 +30,14 @@ function reformattedBooks (books){
             authors: [{
                 first_name : book.first_name,
                 last_name : book.last_name,
-                id: book.author.id
+                id: book.author_id
             }]
             };
             reformatted.push(booksById[book.id]);
         }
+
     });
-    return reformatted;
+            return reformatted;
 }
 
 
@@ -54,15 +55,17 @@ router.get('/', function(request, response, next) {
     'book_cover_url',
     'first_name',
     'last_name',
-    'author.id')
+    'author.id as author_id')
     .join('author_book','author_book.book_id', "=",'book.id')
     .join('author','author.id', "=", 'author_book.author_id')
     .then(data =>{
-        response.json(data.book.id);
+        // response.json(data);
 
-        // const reformatted = reformattedBooks(data);
+        const reformatted = reformattedBooks(data);
         //
-        // response.json(reformatted);
+
+        console.log(reformatted);
+        response.json(reformatted);
     });
 
 });
