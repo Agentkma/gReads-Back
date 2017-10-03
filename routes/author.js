@@ -12,4 +12,8 @@ router.get('/', function(req, res, next) {
   // res.render('index', { title: 'Express' });
 });
 
+/* GET authors by ID */
+
+
+
 module.exports = router;
