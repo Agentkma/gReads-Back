@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 
 
+
 // REQUIRE ROUTE FILES
 var index = require('./routes/index');
 var book = require('./routes/book');
@@ -18,7 +19,8 @@ var app = express();
 
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
 app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -56,6 +58,6 @@ app.use(function(err, req, res, next) {
     });
 });
 
-app.listen(7000);
+app.listen(process.env.PORT);
 
 module.exports = app;
