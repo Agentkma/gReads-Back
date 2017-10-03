@@ -34,7 +34,7 @@ router.get('/', function(request, response, next) {
    });
 
 
-
+});
 
     // then get author by book id
     router.get('/', function(request, response, next) {
